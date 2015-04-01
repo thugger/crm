@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   
+  resources :provinces
+
   root  'finder#index'
   get   'missing_email',         to: 'finder#missing_email'
   get   'alphabetized',          to: 'finder#alphabetized'
