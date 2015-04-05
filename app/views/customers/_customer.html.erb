@@ -1,14 +1,25 @@
-<div class ="customer">
+<div class ="customer" style="width:264px;height:408px;border-style:solid;border-width:1px;padding:10px;box-shadow:2px 2px;margin:10px;">
+	<%= link_to "x", customer, method: :delete, data: { confirm: 'Are you sure?' }, style:"float:right;margin:2px;" %>
+	<%= link_to "edit", edit_customer_path(customer.id), {style:'float:right;margin:2px;'} %>
+	
 <h1><%= link_to customer.full_name, customer %></h1>
 
 <% if customer.image.present? %>
-<p><%= image_tag customer.image, width:100 %></p>
+<p><%= image_tag customer.image, width:90 %></p>
 <% end %>
 
 <p><strong>Phone: </strong><%= customer.phone_number %></p>
 
-<p><strong>Email: </strong><%= customer.email_address %></p>
+<p><strong>Email: </strong><%= mail_to(customer.email_address) %></p>
 
 <p><strong>Notes: </strong><%= customer.notes %></p>
+
+<p><strong>Province: </strong>
+	<% if customer.province_id? %>
+		<%= customer.province.name %>
+	<% else %>
+		None
+	<% end %>	
+	</p>
 
 </div>
